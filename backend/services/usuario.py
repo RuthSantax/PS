@@ -27,9 +27,9 @@ class UsuarioService():
         self.db.commit()
         return
 
+
     def update_usuario(self, id: int, data: Usuario):
         usuario = self.db.query(UsuarioModel).filter(UsuarioModel.id == id).first()
-        usuario.id = data.id
         usuario.nombre = data.nombre
         usuario.email = data.email
         usuario.password = data.password

@@ -7,13 +7,17 @@ class UsuarioAuth(BaseModel):
     email: EmailStr
     password: str
 
-# class Id(BaseModel):
-#     id: int = Field(gt=0, le=1000)
-    
-#     def id_duplicado(objeto, lista:List):
-#         for item in lista:
-#                 if item.id == objeto.id :
-#                     raise HTTPException(status_code = status.HTTP_409_CONFLICT, detail = (f"El id ya se encuentra registrado."))
+class Id(BaseModel):
+    id: int = Field(gt=0, le=1000)
+
+    @classmethod
+    def id_duplicado(cls, objeto, lista: List):
+        for item in lista:
+            if item.id == objeto.id:
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail="El id ya se encuentra registrado."
+                )
 
 
 
