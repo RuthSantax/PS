@@ -31,31 +31,36 @@ class Usuario(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-    # @field_validator('password')
-    # def validar_password(cls, password: SecretStr) -> SecretStr:
-    #     password_str = password.get_secret_value()
+    @field_validator('rol')
+    def validate_rol(cls, rol):
+        if rol not in ["1", "2"]:
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail='El campo rol debe ser: "1 -Administrador" o "2 -Cliente", sólo el ingrese el número correspondiente.')
+        return rol
 
-    #     numeros = '0123456789'
-    #     mayusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    #     minusculas = 'abcdefghijklmnopqrstuvwxyz'
+    @field_validator('password')
+    def validar_password(cls, password: SecretStr) -> SecretStr:
+        password_str = password.get_secret_value()
 
-    #     if not any(char in numeros for char in password_str):
-    #         raise HTTPException(
-    #             status_code=status.HTTP_417_EXPECTATION_FAILED,
-    #             detail="El password debe contener al menos un número (0-9)."
-    #         )
+        numeros = '0123456789'
+        mayusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        minusculas = 'abcdefghijklmnopqrstuvwxyz'
+
+        if not any(char in numeros for char in password_str):
+            raise HTTPException(
+                status_code=status.HTTP_417_EXPECTATION_FAILED,
+                detail="El password debe contener al menos un número (0-9)."
+            )
         
-    #     if not any(char in mayusculas for char in password_str):
-    #         raise HTTPException(
-    #             status_code=status.HTTP_417_EXPECTATION_FAILED,
-    #             detail="El password debe contener al menos una letra mayúscula (A-Z)."
-    #         )
+        if not any(char in mayusculas for char in password_str):
+            raise HTTPException(
+                status_code=status.HTTP_417_EXPECTATION_FAILED,
+                detail="El password debe contener al menos una letra mayúscula (A-Z)."
+            )
         
-    #     if not any(char in minusculas for char in password_str):
-    #         raise HTTPException(
-    #             status_code=status.HTTP_417_EXPECTATION_FAILED,
-    #             detail="El password debe contener al menos una letra minúscula (a-z)."
-    #         )
-
-    #     return password
+        if not any(char in minusculas for char in password_str):
+            raise HTTPException(
+                status_code=status.HTTP_417_EXPECTATION_FAILED,
+                detail="El password debe contener al menos una letra minúscula (a-z)."
+            )
+        return password
     
