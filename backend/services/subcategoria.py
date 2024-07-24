@@ -19,7 +19,7 @@ class SubcategoriaService:
     def update_subcategoria(self, id: str, data: Subcategoria):
         subcategoria = self.db.query(SubcategoriaModel).filter(SubcategoriaModel.id == id).first()
         if subcategoria:
-            subcategoria.categoria_id = data.categoria_id
+            subcategoria.subcategoria_id = data.subcategoria_id
             subcategoria.nombre = data.nombre
             subcategoria.descripcion = data.descripcion
             self.db.commit()

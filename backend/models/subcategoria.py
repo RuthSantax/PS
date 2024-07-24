@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship
 class Subcategoria(Base):
     __tablename__ = "subcategoria"
     id = Column(String(10), primary_key=True)
-    categoria_id = Column(String(50), ForeignKey("categoria.id"))
+    Subcategoria_id = Column(String(50), ForeignKey("categoria.id"))
     nombre = Column(String(50))
     descripcion = Column(String(80))
     
