@@ -12,7 +12,7 @@ class CategoriaService:
         return self.db.query(CategoriaModel).filter(CategoriaModel.id == id).first()
 
     def create_categoria(self, categoria: Categoria):
-        new_categoria = CategoriaModel(**categoria.__dict__())
+        new_categoria = CategoriaModel(**categoria.model_dump())
         self.db.add(new_categoria)
         self.db.commit()
 
