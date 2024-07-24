@@ -1,5 +1,5 @@
 from models.usuario import Usuario as UsuarioModel
-from schemas.usuario import Usuario
+from schemas.usuario import Usuario, Id
 from sqlalchemy.orm import Session
 
 
@@ -22,7 +22,7 @@ class UsuarioService():
 
     def create_usuario(self, usuario: Usuario):
         new_usuario = UsuarioModel(**usuario.model_dump())
-        usuario.id_duplicado(new_usuario, self.db.query(UsuarioModel).all())
+        Id.id_duplicado(new_usuario, self.db.query(UsuarioModel).all())
         self.db.add(new_usuario)
         self.db.commit()
         return
