@@ -8,11 +8,11 @@ class CategoriaService:
     def get_categorias(self):
         return self.db.query(CategoriaModel).all()
 
-    def get_categoria_by_id(self, id):
+    def get_categoria_by_id(self, id:str):
         return self.db.query(CategoriaModel).filter(CategoriaModel.id == id).first()
 
     def create_categoria(self, categoria: Categoria):
-        new_categoria = CategoriaModel(**categoria.dict())
+        new_categoria = CategoriaModel(**categoria.__dict__())
         self.db.add(new_categoria)
         self.db.commit()
 

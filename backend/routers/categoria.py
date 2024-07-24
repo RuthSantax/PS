@@ -21,7 +21,7 @@ def get_categorias() -> List[Categoria]:
 
 
 @categoria_router.get('/categorias/{id}', tags=['categorias'], response_model=Categoria, dependencies=[Depends(JWTBearer())])
-def get_categoria_by_id(id: int = Path(ge=1, le=2000)) -> Categoria:
+def get_categoria_by_id(id: str = Path(min_length=1, max_length=2000)) -> Categoria:
     db = Session()
     result = CategoriaService(db).get_categoria_by_id(id)
     if not result:

@@ -2,7 +2,7 @@ from pydantic import BaseModel, Field
 
 class Categoria(BaseModel):
     id: str
-    nombre: str = Field(min_length=5, max_length=30)
+    nombre: str = Field(min_length=1, max_length=30)
     descripcion: str = Field(min_length=5, max_length=100)
     
     class Config:
