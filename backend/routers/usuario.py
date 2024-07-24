@@ -59,13 +59,15 @@ def get_usuarios() -> List[UsuarioResponse]:
     return JSONResponse(status_code=200, content=jsonable_encoder(usuarios_response))
 
 
-@usuario_router.get('/usuarios/{id}', tags=['usuarios'], response_model=Usuario, dependencies=[Depends(JWTBearer())])
-def get_usuario(id: int = Path(ge=1, le=2000)) -> Usuario:
+@usuario_router.get('/usuarios/{id}', tags=['usuarios'], response_model=UsuarioResponse, dependencies=[Depends(JWTBearer())])
+def get_usuario(id: int = Path(ge=1, le=2000)) -> UsuarioResponse:
     db = Session()
     result = UsuarioService(db).get_usuario(id)
+    
     if not result:
         return JSONResponse(status_code=404, content={'message': "Usuario no encontrado."})
-    return JSONResponse(status_code=200, content=jsonable_encoder(result))
+    usuario_response = UsuarioResponse(**result.__dict__)
+    return JSONResponse(status_code=200, content=jsonable_encoder(usuario_response))
 
 
 @usuario_router.get('/usuarios/', tags=['usuarios'], response_model=List[Usuario], dependencies=[Depends(JWTBearer())])
