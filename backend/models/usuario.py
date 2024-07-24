@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 
 class Usuario(Base):
     __tablename__ = "usuario"
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     nombre = Column(String(50))
     email = Column(String(50), unique=True)
     password = Column(String(128))
