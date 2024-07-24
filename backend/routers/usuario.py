@@ -10,7 +10,7 @@ from middlewares.jwt_bearer import JWTBearer
 from services.usuario import UsuarioService
 from passlib.context import CryptContext
 from utils.jwt_manager import create_token
-from schemas.usuario import Usuario, UsuarioAuth
+from schemas.usuario import Usuario, UsuarioAuth, UsuarioResponse
 from fastapi.responses import JSONResponse
 
 usuario_router = APIRouter()
@@ -50,11 +50,13 @@ def login(user: UsuarioAuth):
         return JSONResponse(status_code=200, content={'accesoOk': True,'token':token, 'usuario': jsonable_encoder(usuario) })
 
 
-@usuario_router.get('/usuarios', tags=['usuarios'], response_model=List[Usuario], status_code=200, dependencies=[Depends(JWTBearer())])
-def get_usuarios() -> List[Usuario]:
+@usuario_router.get('/usuarios', tags=['usuarios'], response_model=List[UsuarioResponse], status_code=200, dependencies=[Depends(JWTBearer())])
+def get_usuarios() -> List[UsuarioResponse]:
     db = Session()
     result = UsuarioService(db).get_usuarios()
-    return JSONResponse(status_code=200, content=jsonable_encoder(result))
+    # Convierte la lista de modelos a una lista de esquemas de respuesta
+    usuarios_response = [UsuarioResponse(**user.__dict__) for user in result]
+    return JSONResponse(status_code=200, content=jsonable_encoder(usuarios_response))
 
 
 @usuario_router.get('/usuarios/{id}', tags=['usuarios'], response_model=Usuario, dependencies=[Depends(JWTBearer())])

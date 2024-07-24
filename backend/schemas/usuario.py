@@ -19,7 +19,14 @@ class Id(BaseModel):
                     detail="El id ya se encuentra registrado."
                 )
 
+class UsuarioResponse(BaseModel):
+    id: int
+    nombre: str
+    email: str
+    rol: str
 
+    class Config:
+        from_attributes = True
 
 class Usuario(BaseModel):
     id: Optional[int] = None

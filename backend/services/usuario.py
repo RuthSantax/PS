@@ -1,6 +1,7 @@
 from models.usuario import Usuario as UsuarioModel
 from schemas.usuario import Usuario, Id
 from sqlalchemy.orm import Session
+from typing import List
 
 
 class UsuarioService():
@@ -8,7 +9,7 @@ class UsuarioService():
     def __init__(self, db) -> None:
         self.db = db
 
-    def get_usuarios(self):
+    def get_usuarios(self)-> List[UsuarioModel]:
         result = self.db.query(UsuarioModel).all()
         return result
 
