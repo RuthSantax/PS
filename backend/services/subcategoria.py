@@ -8,11 +8,11 @@ class SubcategoriaService:
     def get_subcategorias(self):
         return self.db.query(SubcategoriaModel).all()
 
-    def get_subcategoria_by_id(self, id):
+    def get_subcategoria_by_id(self, id:str):
         return self.db.query(SubcategoriaModel).filter(SubcategoriaModel.id == id).first()
 
     def create_subcategoria(self, subcategoria: Subcategoria):
-        new_subcategoria = SubcategoriaModel(**subcategoria.dict())
+        new_subcategoria = SubcategoriaModel(**subcategoria.model_dump())
         self.db.add(new_subcategoria)
         self.db.commit()
 
