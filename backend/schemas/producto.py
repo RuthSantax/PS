@@ -6,23 +6,19 @@ from fastapi.exceptions import HTTPException
 
 class Producto(BaseModel):
     id: Optional[int] = None
-    categoria_id: str = Field(min_length=5, max_length=30)
-    subcateg_id: str = Field(min_length=5, max_length=30)
+    categoria: str = Field(min_length=5, max_length=30)
     nombre: str = Field(min_length=5, max_length=30)
-    precio: int = Field(gt=0)
     descripcion: str = Field(min_length=5, max_length=100)
-    foto: Optional[bytes] = None
+    precio: int = Field(gt=0)
     
     
     class Config:
         json_scheme_extra = {
             "example": {
                 "id": 1,
+                "categoria": "AR",
                 "nombre": "Aro stras",
-                "precio": 2000,
-                "categoria_id": "AR",
-                "subcateg_id": "316L",
                 "descripcion": "Aros con stras y prendedor de acero quirurgico",
-                "foto": "iVBORw0KGgoAAAANSUhEUgAAAAUA"  # Ejemplo de cadena Base64
+                "precio": 2000,
             }
         }
