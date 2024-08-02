@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from typing import List
 from conf.database import Session
 from services.subcategoria import SubcategoriaService
-from schemas.subcategoria import Subcategoria
+from schemas.categoria import Subcategoria
 from middlewares.jwt_bearer import JWTBearer
 
 subcategoria_router = APIRouter()

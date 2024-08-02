@@ -9,5 +9,5 @@ class Subcategoria(Base):
     nombre = Column(String(50))
     descripcion = Column(String(80))
     
-    productos = relationship("Producto", back_populates="subcategoria")
-    categoria = relationship("Categoria", back_populates="subcategorias")
+    productos = relationship("producto", back_populates="subcategoria")
+    
