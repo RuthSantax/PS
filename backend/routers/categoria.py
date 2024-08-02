@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 from fastapi import Depends, Path, Query, HTTPException
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, Field
 from typing import Optional, List
 from conf.database import Session
 from models.categoria import Categoria as CategoriaModel

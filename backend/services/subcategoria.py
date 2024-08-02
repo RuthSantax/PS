@@ -1,5 +1,5 @@
 from models.subcategoria import Subcategoria as SubcategoriaModel
-from schemas.subcategoria import Subcategoria
+from schemas.categoria import Subcategoria
 
 class SubcategoriaService:
     def __init__(self, db):
@@ -19,7 +19,7 @@ class SubcategoriaService:
     def update_subcategoria(self, id: str, data: Subcategoria):
         subcategoria = self.db.query(SubcategoriaModel).filter(SubcategoriaModel.id == id).first()
         if subcategoria:
-            subcategoria.subcategoria_id = data.subcategoria_id
+            subcategoria.subcategoria = data.subcategoria
             subcategoria.nombre = data.nombre
             subcategoria.descripcion = data.descripcion
             self.db.commit()
