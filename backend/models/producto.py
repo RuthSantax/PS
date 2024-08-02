@@ -1,5 +1,5 @@
 from conf.database import Base
-from sqlalchemy import  Column, Integer, String, ForeignKey, LargeBinary
+from sqlalchemy import  Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 class Producto(Base):

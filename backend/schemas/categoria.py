@@ -3,7 +3,7 @@ from typing import Optional, List
 
 
 class id_categoria(BaseModel):
-    id: str
+    id: int
 
 class Categoria(id_categoria):
     
@@ -15,7 +15,7 @@ class Categoria(id_categoria):
         from_attributes = True
         json_schema_extra = {
             "example": {
-                "id": "2",
+                "id": "1",
                 "nombre": "Categoria 1",
                 "categ": "C",
                 "descripcion": "Esta es la categoria 1"

@@ -5,9 +5,9 @@ from sqlalchemy.orm import relationship
 
 class Categoria(Base):
     __tablename__ = "categoria"
-    id = Column(String(10), unique=True)
+    id = Column(Integer(10), unique=True)
     nombre = Column(String(50))
-    categoria = Column(String(10), primary_key=True)
+    categoria = Column(String(20), primary_key=True)
     descripcion = Column(String(100), index=True)
 
     productos = relationship("Producto", back_populates="categoria")
