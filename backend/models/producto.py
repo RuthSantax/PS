@@ -13,8 +13,8 @@ class Producto(Base):
 
     
     
-    categoria = relationship('Categoria', back_populates='productos')
-    subcategoria = relationship('Subcategoria', back_populates='productos')
+    categoria_rel = relationship('Categoria', back_populates='productos')
+    subcategoria_rel = relationship('Subcategoria', back_populates='productos')
     ventas = relationship('Venta', back_populates='producto')
 
     
