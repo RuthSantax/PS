@@ -8,7 +8,7 @@ class id_categoria(BaseModel):
 class Categoria(id_categoria):
     
     nombre: str = Field(min_length=1, max_length=30)
-    categ: Optional[str] = Field(min_length=1, max_length=30)
+    categoria_: Optional[str] = Field(min_length=1, max_length=30)
     descripcion: str = Field(min_length=5, max_length=100)
     
     class Config:
@@ -17,7 +17,7 @@ class Categoria(id_categoria):
             "example": {
                 "id": "1",
                 "nombre": "Categoria 1",
-                "categ": "C",
+                "categoria_": "C",
                 "descripcion": "Esta es la categoria 1"
             }
         }
