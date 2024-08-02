@@ -6,8 +6,9 @@ from fastapi.exceptions import HTTPException
 
 class Producto(BaseModel):
     id: Optional[int] = None
-    categoria: str = Field(min_length=5, max_length=30)
-    nombre: str = Field(min_length=5, max_length=30)
+    categoria: Optional[str] = None
+    subcategoria: Optional[str] = None
+    nombre: str = Field(min_length=1, max_length=30)
     descripcion: str = Field(min_length=5, max_length=100)
     precio: int = Field(gt=0)
     
@@ -17,6 +18,7 @@ class Producto(BaseModel):
             "example": {
                 "id": 1,
                 "categoria": "AR",
+                "subcategoria": "C",
                 "nombre": "Aro stras",
                 "descripcion": "Aros con stras y prendedor de acero quirurgico",
                 "precio": 2000,
