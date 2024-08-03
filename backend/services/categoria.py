@@ -20,7 +20,7 @@ class CategoriaService:
         categoria = self.db.query(CategoriaModel).filter(CategoriaModel.id == id).first()
         if categoria:
             categoria.nombre = data.nombre
-            categoria.categ = data.categ
+            categoria.categoria_ = data.categoria_
             categoria.descripcion = data.descripcion
             self.db.commit()
 

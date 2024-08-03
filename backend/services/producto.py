@@ -15,12 +15,12 @@ class ProductoService():
         result = self.db.query(ProductoModel).filter(ProductoModel.id == id).first()
         return result
 
-    def get_producto_by_categoria(self, categoria_id: str):
-        result = self.db.query(ProductoModel).filter(ProductoModel.categoria_id == categoria_id).all()
+    def get_producto_by_categoria(self, categoria: str):
+        result = self.db.query(ProductoModel).filter(ProductoModel.categoria == categoria).all()
         return result
     
-    def get_producto_by_subcategoria(self, subcateg_id: str):
-        result = self.db.query(ProductoModel).filter(ProductoModel.subcateg_id == subcateg_id).all()
+    def get_producto_by_subcategoria(self, subcategoria: str):
+        result = self.db.query(ProductoModel).filter(ProductoModel.subcategoria == subcategoria).all()
         return result
     
     def get_producto_by_name(self, nombre: str):
@@ -39,12 +39,11 @@ class ProductoService():
 
     def update_producto(self, id: int, data: Producto):
         producto = self.db.query(ProductoModel).filter(ProductoModel.id == id).first()
-        producto.categoria_id = data.categoria_id
-        producto.subcateg_id = data.subcateg_id
-        producto.nombre = data.nombre
-        producto.precio = data.precio
+        producto.categoria = data.categoria
+        producto.subcategoria = data.subcategoria
+        producto.nombre = data.nombre  
         producto.descripcion = data.descripcion
-        producto.foto = data.foto
+        producto.precio = data.precio
         self.db.commit()
         return
 

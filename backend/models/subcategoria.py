@@ -1,5 +1,5 @@
 from conf.database import Base
-from sqlalchemy import Column, String, ForeignKey, Integer
+from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
 
 class Subcategoria(Base):
