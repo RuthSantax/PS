@@ -34,7 +34,7 @@ def get_producto_by_precio(precio: int) -> List[Producto]:
     db = Session()
     result = ProductoService(db).get_producto_by_precio(precio)
     if not result:
-        return JSONResponse(status_code=404, content={'message': "Vehículo no encontrado"})
+        return JSONResponse(status_code=404, content={'message': "Producto no encontrado"})
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
 @producto_router.get('/productos/nombre/{nombre}', tags=['productos'], response_model=List[Producto], dependencies=[Depends(JWTBearer())])

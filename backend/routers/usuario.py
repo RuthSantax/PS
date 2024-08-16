@@ -54,7 +54,7 @@ def login(user: UsuarioAuth):
 def get_usuarios() -> List[UsuarioResponse]:
     db = Session()
     result = UsuarioService(db).get_usuarios()
-    # Convierte la lista de modelos a una lista de esquemas de respuesta
+    # Convierte la lista de subcategorias a una lista de esquemas de respuesta
     usuarios_response = [UsuarioResponse(**user.__dict__) for user in result]
     return JSONResponse(status_code=200, content=jsonable_encoder(usuarios_response))
 

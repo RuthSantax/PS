@@ -20,7 +20,7 @@ class VentaService:
         result = self.db.query(VentaModel).filter(VentaModel.usuario_id == usuario_id).all()
         return result
     
-    # def get_reserva_activa(self, usuario_id: int):
+    # def get_venta_activa(self, usuario_id: int):
     #         now = date.now()
     #         result = self.db.query(VentaModel).filter(VentaModel.usuario_id == usuario_id, VentaModel.cantidad >= now).all()
     #         return result
