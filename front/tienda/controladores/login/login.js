@@ -13,13 +13,13 @@ const htmlLogin=
 
             <div class="input-group">
                 
-                <input type="email" class="form-control" id="loginEmail" placeholder="Email" name="loginEmail" autocomplete required>
+                <input type="email" class="form-control" id="loginEmail" placeholder="Email" name="loginEmail" autocomplete required="new-password">
                 
             </div>
 
             <div class="input-group">
                 
-                <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="loginPassword" autocomplete required>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="loginPassword" autocomplete required="new-password">
             
             </div>
 
@@ -52,19 +52,19 @@ const htmlRegistro=
             
             <div class="input-group">
                 
-                <input type="nombre" class="form-control" id="loginNombre" placeholder="Nombre" name="loginNombre" autocomplete required>
+                <input type="nombre" class="form-control" id="loginNombre" placeholder="Nombre" name="loginNombre" autocomplete required="new-password">
                 
             </div>
 
             <div class="input-group">
                 
-                <input type="email" class="form-control" id="loginEmail" placeholder="Email" name="loginEmail" autocomplete required>
+                <input type="email" class="form-control" id="loginEmail" placeholder="Email" name="loginEmail" autocomplete required="new-password">
                 
             </div>
 
             <div class="input-group">
                 
-                <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="loginPassword" autocomplete required>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="loginPassword" autocomplete required"="new-password">
             
             </div>
 
