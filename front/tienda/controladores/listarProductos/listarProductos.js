@@ -5,7 +5,7 @@ function htmlCategoria(id, categoria) {
     let cad = 
                 `<div class="categorias" data-idCategoria="${id}">
                     <h1 class="categoria">${categoria}</h1>
-                    <div class="Vehículos">
+                    <div class="Productos">
 
                         <!-- Acá listan los productos-->
                         <p class="item-producto">Sin productos.</p>
@@ -22,7 +22,7 @@ function htmlItemproducto(id, subcategoria, categoria) {
                 <p class="producto_nombre" name="Megane">${subcategoria}</p>
                 <p class="producto_categoria">${categoria}</p>
             
-                <a href="?idproducto=${id}#vistaproducto" type="button" class="producto_enlace" >Ver Vehículo</a>
+                <a href="?idproducto=${id}#vistaproducto" type="button" class="producto_enlace" >Ver Ptoducto</a>
             
             </div>`;
     return cad; 
