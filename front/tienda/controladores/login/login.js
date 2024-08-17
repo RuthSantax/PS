@@ -1,5 +1,5 @@
 /**ESTE MODULO SE ENCARGA DE RENDERIZAR LA PANTALLA DE LOGIN Y DE REGISTRO SEGUN CORRESPONDA */
-import { usuariosServices } from "../../../servicios/usuarios-servicios.js";
+import { usuariosServices } from "/front/servicios/usuarios-servicios.js";
 
 /**1- Se debe asignar a la siguiente constante todo el código correspondiente al componente de login (/asset/modulos/login.html)  */
 const htmlLogin=
@@ -158,7 +158,7 @@ function crearFormulario(registrar){
     }else{
         
         inputRepetirPass.style.display ="block";
-        d.querySelector(".cajaLogin p").innerHTML = "Registar usuario"
+        d.querySelector(".cajaLogin p").innerHTML = "Registrar usuario"
     }
     
     formulario = seccionLogin.querySelector(".formLogin");
