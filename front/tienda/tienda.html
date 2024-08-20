@@ -9,23 +9,35 @@
     
    
     <link rel="stylesheet" href="/front/tienda/assets/css/style.css">
+
     <link rel="stylesheet" href="/front/tienda/assets/css/carrousel.css">
+
     <link rel="stylesheet" href="/front/tienda/assets/css/productos.css">
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
-     
+
+    <link rel="stylesheet" href="/front/plugins/fontawesome-free/css/all.min.css">
+ 
+    <script type="module" src="/front/tienda/App/tienda.js"></script> 
+
     
 </head>
 <body>
     <header>
-        <img src="../../../img/plantilla/logo_light.png" alt="Logo">
-        <div class="login">
+        <img src="/front/img/plantilla/logo_light.png" alt="Logo">
+        <div id: class="login">
             <div>
                 <i class="far fa-user"></i>
             </div>
             <div>
-                <a href="login.html">Login</a>
-                <a href="#register">Registrarse</a>
+                <ul id="navbar">
+                    <li>
+                        <a
+                            href="#login" class="btnLogin" data-emailUsuario="" data-idUsuario=""> Login</a>
+                        </a>
+
+                    <a href="#register" class="btnRegister">Registrarse</a>
+                </li>
             </div>
         </div>
     </header>

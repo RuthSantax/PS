@@ -133,13 +133,13 @@ function crearFormulario(registrar){
      *    el input reLoginPassword se mostrará en pantalla.
      * 7- Por último se deberá capturar el formulario indentificado con la clase .formLogin y asignarlo a la variable global formulario.
      */
-    let d = document;
-    let seccionLogin = d.querySelector(".seccionLogin");
-    let carrusel = d.querySelector(".carrusel");
+    //let d = document;
+    let seccionLogin = document.querySelector(".seccionLogin");
+    let carrusel = document.querySelector(".carrusel");
     carrusel.innerHTML = '';
-    let seccionproductos = d.querySelector(".seccionproductos");
+    let seccionproductos = document.querySelector(".seccionproductos");
     seccionproductos.innerHTML = '';
-    let vistaproducto = d.querySelector(".vistaproducto");
+    let vistaproducto = document.querySelector(".vistaproducto");
     vistaproducto.innerHTML = '';
     
     if (! registrar ){        
@@ -205,17 +205,53 @@ async function  registrarUsuario(e){
      */
     e.preventDefault();
  
-    if( inputPassword.value === inputRepetirPass.value) {
-       await usuariosServices.crear(inputNombre, inputEmail.value, inputPassword.value,2);
-       mostrarMensaje('Email registrado.') 
-       window.location.href = "#login" ; 
-    }else{
-        mostrarMensaje('Las contraseñas no son iguales');
-    }
+     // Obtener valores de los campos
+     const nombre = inputNombre.value.trim(); // Asumiendo que el nombre no es obligatorio en el registro
+     const email = inputEmail.value.trim();
+     const password = inputPassword.value.trim();
+     const repetirPassword = inputRepetirPass.value.trim();
+   
+     // Validación: Contraseñas coinciden y tienen al menos 8 caracteres
+     if (password !== repetirPassword) {
+       mostrarMensaje("Las contraseñas ingresadas no son iguales.");
+       return;
+     }
+   
+     if (password.length < 8) {
+       mostrarMensaje("La contraseña debe tener al menos 8 caracteres.");
+       return;
+     }
+   
+     // Validación de formato de correo electrónico
+     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     if (!emailRegex.test(email)) {
+       mostrarMensaje("El correo electrónico ingresado no tiene un formato válido.");
+       return;
+     }
+   
+     try {
+       // Obtener la lista de usuarios
+       const usuarios = await usuariosServices.listar();
+   
+       // Verificar si ya existe un usuario con el mismo email
+       const usuarioExistente = usuarios.find(usuario => usuario.email === email);
+       if (usuarioExistente) {
+         mostrarMensaje("Ya existe un usuario registrado con este correo electrónico.");
+         return;
+       }
+   
+       // Llamar al servicio para crear un nuevo usuario
+       await usuariosServices.crear(nombre, email, password);
+   
+       // Mostrar mensaje de éxito y redirigir a la pantalla de login
+       mostrarMensaje("Email Registrado. Por favor, inicia sesión.");
+       window.location.href = "#login";
+     } catch (error) {
+       console.error('Error al registrar usuario:', error);
+       mostrarMensaje(error.message);
+     }
+   }
 
-    usuariosServices.crear(input)
-    
-}
 async function usuarioExiste() {
     /**
      * 1- El objetivo de esta función es consultar la lista de usuarios con la función usuariosServices.listar() y mediante
@@ -258,15 +294,15 @@ export function mostrarUsuario(email){
      * 2- Deberá capturar del dom la clase .btnRegister y asignarle el texto "Logout" y a este elemento asignarle el valor
      *    "#logout" sobre el atributo href.
      **/
-    let d=document;
-    let btnLogin =d.querySelector(".btnLogin");
-    let btnLogout =d.querySelector(".btnRegister");
+    //let d=document;
+    var btnLogin = document.querySelector(".btnLogin");
+    let btnRegister = document.querySelector(".btnRegister");
     //btnLogin.setAttribute("data-emailUsuario", inputEmail.value);
     //btnLogin.setAttribute("data-idUsuario", idUsuario);
     btnLogin.textContent = email;
-    btnLogout.textContent = "Logout";
-    btnLogout.setAttribute("href", "#logout");
-
+    btnRegister.textContent = "Logout";
+    btnRegister.setAttribute("href", "#logout");
+    //btnLogout
 }
 
 function mostrarMensaje(msj) {
