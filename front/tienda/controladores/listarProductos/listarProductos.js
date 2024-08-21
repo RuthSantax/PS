@@ -30,7 +30,7 @@ function htmlItemproducto(id, subcategoria, categoria) {
 }
 
 async function asignarproducto(id) {
-    let d = document;
+    
     let cad = "";
     let resproducto = await productosServices.listarPorCategoria(id);
 
@@ -38,15 +38,15 @@ async function asignarproducto(id) {
         cad += htmlItemproducto(producto.id, producto.categoria, producto.subcategoria, producto.descripcion, producto.nombre, producto.precio);
     });
         
-    let itemproducto = d.querySelector("[data-idCategoria='"+ id + "'] .productos");
+    let itemproducto = document.querySelector("[data-idCategoria='"+ id + "'] .productos");
     itemproducto.innerHTML = cad; 
 } 
 
 export async function listarproductos() {
-    let d = document;
+    
      let resCat;
 
-     let listaproductos = d.querySelector(".seccionproductos");
+     let listaproductos = document.querySelector(".seccionproductos");
 
      listaproductos.innerHTML = "";
      resCat =  await categoriasServices.listar();

@@ -13,13 +13,13 @@ export async function vistaproducto(){
      * 6-El resultado de la función deberá asignarse al elemento .vistaProducto capturado previamente.
      * 7-Se deberá capturar el elemento html correspondiente al anchor btnComprar y enlazar el evento click a la función registrarCompra.  
     */
-    let d = document;
+    
     let res;
-    let carrusel = d.querySelector(".carrusel");
-    let seccionproductos = d.querySelector(".seccionproductos");
-    let vistaproducto = d.querySelector(".vistaproducto");
+    let carrusel = document.querySelector(".carrusel");
+    let seccionProductos = document.querySelector(".seccionproductos");
+    let vistaproducto = document.querySelector(".vistaproducto");
     carrusel.innerHTML = "";
-    let seccionLogin = d.querySelector(".seccionLogin");
+    let seccionLogin = document.querySelector(".seccionLogin");
     seccionLogin.innerHTML = "";
     seccionProductos.innerHTML = "";
     let idProducto = leerParametro();
@@ -30,7 +30,7 @@ export async function vistaproducto(){
     vistaproducto.innerHTML =  htmlVistaproducto(res.id, res.categoria, res.subcategoria, res.nombre, res.precio);
     /*Se debe capturar el boton commprar y el input cantidad*/
 
-    let btnComprar = d.getElementById("btnComprar");
+    let btnComprar = document.getElementById("btnComprar");
     
 
     btnComprar.addEventListener("click", registrarCompra);
@@ -94,18 +94,18 @@ async function registrarVenta(){
      * 10-Finalmente emitimos una alerta con la leyenda "Compra finalizada."
      *     
      */
-    let d = document;
+    
     let session = getUsuarioAutenticado();
     if(! session.autenticado){
         alert("Antes de ventar debe iniciar sesión")
         return;
     }
-    let cantidad = d.getElementById("cantidadproducto").value;
-   // let anchorLogin = d.querySelector(".login a['data-emailUsuario']");
+    let cantidad = document.getElementById("cantidadproducto").value;
+   // let anchorLogin = document.querySelector(".login a['data-emailUsuario']");
     let idUsuario = session.idUsuario
     //let emailUsuario = anchorLogin.getAttribute("emailUsuario");
     let emailUsuario = session.email;
-    let nameproducto= d.getElementById("nameProducto") ;
+    let nameproducto= document.getElementById("nameProducto") ;
     let idproducto = nameproducto.getAttribute("data-idproducto");
     let fecha = new Date()
     fecha = formatearFecha(fecha)

@@ -134,34 +134,32 @@ function crearFormulario(registrar){
      * 7- Por último se deberá capturar el formulario indentificado con la clase .formLogin y asignarlo a la variable global formulario.
      */
     //let d = document;
-    let seccionLogin = document.querySelector(".seccionLogin");
-    let carrusel = document.querySelector(".carrusel");
+    let carrusel = document.querySelector(".carrousel");
     carrusel.innerHTML = '';
-    let seccionproductos = document.querySelector(".seccionproductos");
+
+    let seccionProductos = document.querySelector(".seccionproductos");
     seccionproductos.innerHTML = '';
+
     let vistaproducto = document.querySelector(".vistaproducto");
     vistaproducto.innerHTML = '';
     
-    if (! registrar ){        
-        seccionLogin.innerHTML = htmlLogin;
-    }else{
-        seccionLogin.innerHTML = htmlRegistro
-        inputNombre= d.getElementById("loginNombre");
-    }
-    
-   
-    inputEmail= d.getElementById("loginEmail");
-    inputPassword= d.getElementById("loginPassword");
-    inputRepetirPass = d.getElementById("reLoginPassword");
-    if (! registrar ){        
+    let seccionLogin = document.querySelector(".seccionLogin");
+    seccionLogin.innerHTML = htmlLogin;
+    /* 4 */
+    inputNombre = document.getElementById("loginNombre");
+    inputEmail = document.getElementById("loginEmail");
+    inputPassword = document.getElementById("loginPassword");
+    inputRepetirPass = document.getElementById("reLoginPassword");
+    /* 5 */
+    if (!registrar) {
         inputRepetirPass.outerHTML = "";
-    }else{
-        
-        inputRepetirPass.style.display ="block";
-        d.querySelector(".cajaLogin p").innerHTML = "Registrar usuario"
+        inputNombre.outerHTML = "";
+    } else {
+        inputRepetirPass.style.display = "block";
+        inputNombre.style.display = "block";
     }
-    
-    formulario = seccionLogin.querySelector(".formLogin");
+    /* 7 */
+    formulario = document.querySelector(".formLogin");
 } 
 
 async function  ingresar(e){
