@@ -36,7 +36,7 @@ async function listar(id) {
     .then(respuesta => respuesta.json());
 }
 
-async function crear(nombre, email,password, rol) {
+async function crear(nombre, email, password, rol) {
     console.log()
     return await fetch(url, {
         method: 'POST',

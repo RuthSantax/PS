@@ -2,14 +2,12 @@
 import { usuariosServices } from "/front/servicios/usuarios-servicios.js";
 
 /**1- Se debe asignar a la siguiente constante todo el código correspondiente al componente de login (/asset/modulos/login.html)  */
-const htmlLogin=
-`<div class="contenedorLogin">
+const htmlLogin = `
+<div class="contenedorLogin">
     <div class="cajaLogin">
-        <p >Iniciar sesión</p>
+        <p id="iniciar-sesion">Iniciar Sesion / Registrarse</p>
 
-        <form  class="formLogin" >
-
-
+        <form class="formLogin">
 
             <div class="input-group">
                 
@@ -18,7 +16,7 @@ const htmlLogin=
             </div>
 
             <div class="input-group">
-                
+
                 <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="loginPassword" autocomplete required="new-password">
             
             </div>
@@ -28,19 +26,15 @@ const htmlLogin=
                 <input type="password" class="form-control" id="reLoginPassword" placeholder="Repetir Password" name="reLoginPassword"  required>
             
             </div>
-                        
+
             <div class="row">
-                                
                 <div class="col-4">
-                <button type="submit"  id="iniciar-sesion" class="btnAmarillo">Login</button>
+                    <button type="submit" id="iniciar-sesion" class="btnAmarillo">Login</button>
                 </div>
-                    
             </div>
         </form>
-            
     </div>
-</div>
-`;
+</div>`;
 
 const htmlRegistro=
 `<div class="contenedorLogin">
@@ -137,7 +131,7 @@ function crearFormulario(registrar){
     let carrusel = document.querySelector(".carrousel");
     carrusel.innerHTML = '';
 
-    let seccionProductos = document.querySelector(".seccionproductos");
+    let seccionproductos = document.querySelector(".seccionproductos");
     seccionproductos.innerHTML = '';
 
     let vistaproducto = document.querySelector(".vistaproducto");
@@ -145,6 +139,7 @@ function crearFormulario(registrar){
     
     let seccionLogin = document.querySelector(".seccionLogin");
     seccionLogin.innerHTML = htmlLogin;
+
     /* 4 */
     inputNombre = document.getElementById("loginNombre");
     inputEmail = document.getElementById("loginEmail");
